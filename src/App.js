@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
 
     let pageList = ['/user', '/agent', '/admin']
-    if(!isAuthenticated) {
+    if(!isAuthenticated && !location.pathname.startsWith('/auth') && !location.pathname.startsWith('/error')) {
       navigate('/auth/login')
     } else if(!location.pathname.startsWith('/auth') && !location.pathname.startsWith('/error') && !pageList.includes(location.pathname)) {
       navigate('/error/404');
